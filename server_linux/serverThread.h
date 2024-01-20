@@ -4,8 +4,8 @@
 #include <string>
 
 
-
 using std::string;
+
 class server;
 class serverThread
 {
@@ -19,6 +19,7 @@ private:
 	void sendMessage(string, string);
 	int login(string, string);
 	string requestINFO(string, string);
+	void query(string);
 
 	string getUserData(string);
 	bool checkPass(string, string);

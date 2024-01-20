@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <string>
+#include <cstdarg>
 
 #define END_CMD (string)"&end;"
 #define DIV_CMD (string)"&div;"
@@ -12,3 +13,4 @@ class huurinn
 };
 
 string divide(string&, string str = DIV_CMD);
+string replace(string, ...);
