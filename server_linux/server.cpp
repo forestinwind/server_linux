@@ -12,6 +12,8 @@ server::server(short unsigned int port = server_PORT)
     serverIP.sin_family = AF_INET;
     serverIP.sin_port = htons(port);
     serverIP.sin_addr.s_addr = htonl(INADDR_ANY);
+    string sqlcmd = "UPDATE userTable SET loged = false;";
+    sqlComand(sqlcmd);
     sockID = socket(AF_INET, SOCK_STREAM, 0);
 }
 void server::begin(int num)
@@ -34,7 +36,7 @@ void server::begin(int num)
 MYSQL_RES* server::sqlComand(string cmd)
 {
     std::cout << cmd << "\n";
-    if (mysql_query(thisMysql, cmd.data()))std::cout << "succeed query\n";
-    else std::cout << "fail";
+    if (mysql_query(thisMysql, cmd.data()))std::cout << "failed"<<mysql_error(thisMysql);
+    else std::cout << "succeed query";
     return mysql_store_result(thisMysql);
 }
