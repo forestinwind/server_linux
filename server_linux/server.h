@@ -23,10 +23,12 @@ class server
 {
 public:
     server(short unsigned int);
+    ~server();
     void begin(int num = 5);
     MYSQL_RES* sqlComand(string);
+    void forwardMess(string, string);
 
-    std::map<serverThread*, string> threadUser;
+    std::map<string, serverThread* > userThread;
 private:
     struct sockaddr_in serverIP;
     int sockID;

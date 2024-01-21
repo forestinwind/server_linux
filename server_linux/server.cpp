@@ -16,6 +16,10 @@ server::server(short unsigned int port = server_PORT)
     sqlComand(sqlcmd);
     sockID = socket(AF_INET, SOCK_STREAM, 0);
 }
+server::~server()
+{
+    close(sockID);
+}
 void server::begin(int num)
 {
     assert(bind(sockID, (struct sockaddr*)&serverIP, sizeof(serverIP)) == 0);
@@ -38,5 +42,11 @@ MYSQL_RES* server::sqlComand(string cmd)
     std::cout << cmd << "\n";
     if (mysql_query(thisMysql, cmd.data()))std::cout << "failed"<<mysql_error(thisMysql);
     else std::cout << "succeed query";
+    std::cout << "test\n";
     return mysql_store_result(thisMysql);
 }
+void server::forwardMess(string id, string init)
+{
+    if(userThread.at(id) != nullptr) userThread[id]->sendMessage("CHATADD", init);
+}
+

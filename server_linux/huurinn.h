@@ -13,4 +13,4 @@ class huurinn
 };
 
 string divide(string&, string str = DIV_CMD);
-string replace(string, ...);
+string replaceStr(string, ...);
