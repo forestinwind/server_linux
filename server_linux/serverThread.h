@@ -23,12 +23,14 @@ private:
 	void sendChat(string);
 	string regist(string);
 	bool addFriend(string);
+	string removeFriend(string);
 	void changeInfo(string);
 
 	string getUserData(string);
 	bool checkPass(string, string);
 	void setUser(string, string);
 
+	bool running;
 	int buflen;
 	char* buffer;
 	int thisSock;

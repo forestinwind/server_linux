@@ -30,9 +30,9 @@ void server::begin(int num)
 
     while (1) {
         int newSock = accept(sockID, (struct sockaddr*)&clitAddr, &clitLen);
-        
+        std::cout << "getNEWsock" << newSock<<"\n";
         serverThread* newThread = new serverThread(newSock, this);
-
+     //   newThread->thisThread.detach();
     //    std::thread mythread(std::mem_fn(&ChatServ::func), this, connfd);
     //    mythread.detach();
     }
@@ -47,6 +47,7 @@ MYSQL_RES* server::sqlComand(string cmd)
 }
 void server::forwardMess(string id, string init)
 {
-    if(userThread.at(id) != nullptr) userThread[id]->sendMessage("CHATADD", init);
+    std::cout << "trySEND:" << id << "\n";
+    if (userThread[id] != nullptr) userThread[id]->sendMessage("CHATADD", init);
 }
 

@@ -9,9 +9,7 @@ string divide(string& init, string str)
 	string ret;
 	if(loc == string::npos)
 	{
-		string ret = init;
-		init = "";
-		return ret;
+		return "";
 	}
 	ret.assign(init, 0, loc);
 	init = init.substr(loc + str.size());
