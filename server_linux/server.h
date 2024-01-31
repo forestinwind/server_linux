@@ -26,7 +26,7 @@ public:
     ~server();
     void begin(int num = 5);
     MYSQL_RES* sqlComand(string);
-    void forwardMess(string, string);
+    void forwardMess(string, string, string);
 
     std::map<string, serverThread* > userThread;
 private:

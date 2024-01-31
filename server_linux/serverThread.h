@@ -14,17 +14,27 @@ public:
 	~serverThread();
 	void run();
 	void sendMessage(string, string);
+	void freshFriendInfo(string);
 private:
 	void getMessage(string);
 	void sendMessage(string);
 	int login(string, string);
 	string requestINFO(string, string);
-	void query(string);
+	string query(string);
 	void sendChat(string);
 	string regist(string);
 	bool addFriend(string);
+	bool addGroup(string);
 	string removeFriend(string);
+	void quitGroup(string);
 	void changeInfo(string);
+	void requestGroupINFO(string, string);
+	string groupQuery(string);
+	void sendGroupChat(string);
+	void setGroupMemberLevel(string);
+
+	void forwardGroup(string, string, string);
+
 
 	string getUserData(string);
 	bool checkPass(string, string);

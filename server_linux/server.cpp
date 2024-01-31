@@ -39,15 +39,13 @@ void server::begin(int num)
 }
 MYSQL_RES* server::sqlComand(string cmd)
 {
-    std::cout << cmd << "\n";
     if (mysql_query(thisMysql, cmd.data()))std::cout << "failed"<<mysql_error(thisMysql);
     else std::cout << "succeed query";
     std::cout << "test\n";
     return mysql_store_result(thisMysql);
 }
-void server::forwardMess(string id, string init)
+void server::forwardMess(string cmd, string id, string init)
 {
-    std::cout << "trySEND:" << id << "\n";
-    if (userThread[id] != nullptr) userThread[id]->sendMessage("CHATADD", init);
+    if (userThread[id] != nullptr) userThread[id]->sendMessage(cmd, init);
 }
 
